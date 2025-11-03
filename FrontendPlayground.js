@@ -68,6 +68,7 @@ const projectGroups = [
   {
     name: "UI Components",
     projects: [
+      { name: "Button Ripple Effect", url: "ButtonRippleEffect/ButtonRippleEffect.html" }
       // { name: "Feedback UI", url: "project1/index.html" },
       // { name: "Animated Search Bar", url: "project2/index.html" },
       // { name: "Sticky Navbar", url: "project3/index.html" },
@@ -79,7 +80,6 @@ const projectGroups = [
       // { name: "Heart Trail Animation", url: "GPACalculator/GPACalculator.html" }
       // { name: "Auto Text Effect Animation", url: "GPACalculator/GPACalculator.html" }
       // { name: "Double Landing Page", url: "GPACalculator/GPACalculator.html" }
-      // { name: "Button Ripple Effect", url: "GPACalculator/GPACalculator.html" }
     ]
   },
   {
