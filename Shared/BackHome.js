@@ -1,6 +1,6 @@
 (() => {
   const scriptEl = document.currentScript;
-  // 传相对路径（相对当前项目页）或绝对路径；默认 '/index.html'
+  // Get home URL from data attribute or default to /index.html
   const homeAttr = scriptEl?.dataset?.home || '/index.html';
   const homeURL = new URL(homeAttr, location.href);
 
@@ -11,12 +11,12 @@
   btn.textContent = '← Home';
 
   btn.addEventListener('click', () => {
-    // 如果是从主页打开的新标签，尝试关闭标签；否则跳转回主页
+    // If opened from home page in a new tab, try to close the tab; otherwise, go back to home page
     try {
       const from = document.referrer ? new URL(document.referrer) : null;
       const isFromSameHome = !!from && from.pathname.endsWith(new URL(homeAttr, location.href).pathname);
       if (isFromSameHome && window.opener && !window.opener.closed) {
-        // 仅在由脚本 window.open 打开的窗口中有效
+        // Only works for windows opened by script window.open
         window.close();
         return;
       }
@@ -24,6 +24,6 @@
     location.href = homeURL.href;
   });
 
-  // 插入到 body 末尾
+  // Insert button at the end of the body
   window.addEventListener('DOMContentLoaded', () => document.body.appendChild(btn));
 })();
