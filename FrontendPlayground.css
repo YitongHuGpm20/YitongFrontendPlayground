@@ -1,0 +1,69 @@
+/* General */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Title and Subtitle */
+header {
+  padding: 60px 20px 30px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+header p {
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5
+}
+
+/* Search Bar */
+.search-section {
+  margin: 10px;
+}
+
+#searchInput {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+/* Button Area */
+#projectList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px;
+}
+
+/* Project Button */
+.project-btn {
+  background-color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.project-btn:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
