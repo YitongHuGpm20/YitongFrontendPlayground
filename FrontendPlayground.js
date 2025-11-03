@@ -48,6 +48,7 @@ const projectGroups = [
   {
     name: "Games",
     projects: [
+      { name: "Quiz Game", url: "QuizGame/QuizGame.html" },
       // { name: "Rock Paper Scissors Game", url: "project1/index.html" },
     ]
   },
