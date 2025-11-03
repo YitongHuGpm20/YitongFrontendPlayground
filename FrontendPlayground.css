@@ -1,69 +1,143 @@
-/* General */
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #333;
-  margin: 0;
-  text-align: center;
+/* =========================
+   Base & Variables
+========================= */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root{
+  /* Colors */
+  --bg: #f4f6f8;
+  --text: #333;
+  --muted: #666;
+  --border: #ccc;
+  --brand: #4a90e2;
+  --white: #fff;
+  --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 10px rgba(0,0,0,0.15);
+
+  /* Typography & spacing */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --fz-base: 16px;
+  --fz-h1: 2.2rem;
+  --fz-h2: 1.4rem;
+  --space-1: 10px;
+  --space-2: 15px;
+  --space-3: 20px;
+  --space-4: 30px;
+  --space-5: 40px;
 }
 
-/* Title and Subtitle */
+html { font-size: var(--fz-base); }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* =========================
+   Layout: Header & Intro
+========================= */
 header {
-  padding: 60px 20px 30px;
+  padding: 60px var(--space-3) var(--space-4);
 }
 
 header h1 {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
+  font-size: var(--fz-h1);
+  margin: 0 0 var(--space-4);
 }
 
 header p {
-  color: #666;
+  color: var(--muted);
   max-width: 500px;
   margin: 0 auto;
-  line-height: 1.5
 }
 
-/* Search Bar */
-.search-section {
-  margin: 10px;
-}
+/* =========================
+   Search
+========================= */
+.search-section { margin: var(--space-1); }
 
 #searchInput {
   width: 300px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  max-width: 90vw;
+  padding: var(--space-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-#searchInput:focus {
+#searchInput:focus-visible {
   outline: none;
-  border-color: #4a90e2;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent);
 }
 
-/* Button Area */
-#projectList {
+/* =========================
+   Project List (legacy id kept)
+========================= */
+#projectList,
+.group-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
-  padding: 40px;
+  gap: var(--space-2);
+  padding: var(--space-3);
 }
 
-/* Project Button */
+/* =========================
+   Project Button
+========================= */
 .project-btn {
-  background-color: #fff;
+  background-color: var(--white);
   border: none;
   padding: 14px 28px;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: var(--radius);
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: 0.2s;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .project-btn:hover {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+}
+
+.project-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-md), 0 0 0 3px color-mix(in srgb, var(--brand) 35%, transparent);
+}
+
+/* =========================
+   Groups
+========================= */
+.group { 
+  margin-top: var(--space-5);
+}
+
+.group h2 {
+  font-size: var(--fz-h2);
+  margin: var(--space-1) 0 var(--space-1);
+  color: var(--text);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 640px) {
+  header { padding: 40px var(--space-3) var(--space-3); }
+  #projectList,
+  .group-buttons { padding: var(--space-4); }
+  .project-btn { padding: 12px 18px; }
 }
