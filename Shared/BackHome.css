@@ -1,0 +1,20 @@
+:root{
+  --bh-bg:#fff; --bh-fg:#333; --bh-shadow:0 2px 5px rgba(0,0,0,.12);
+  --bh-shadow-h:0 4px 10px rgba(0,0,0,.18); --bh-brand:#4a90e2;
+  --bh-radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bh-bg:#1e1f22; --bh-fg:#e7e7e7; --bh-shadow:0 2px 5px rgba(0,0,0,.4); --bh-shadow-h:0 4px 12px rgba(0,0,0,.6); }
+}
+
+.back-home {
+  position: fixed; inset: 16px auto auto 16px; z-index: 9999;
+  background: var(--bh-bg); color: var(--bh-fg);
+  border: 0; border-radius: var(--bh-radius);
+  padding: 10px 14px; font: 14px/1.1 system-ui,-apple-system,'Segoe UI',Arial;
+  box-shadow: var(--bh-shadow); cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.back-home:hover { transform: translateY(-1px); box-shadow: var(--bh-shadow-h); }
+.back-home:focus-visible { outline: none; box-shadow: var(--bh-shadow-h), 0 0 0 3px color-mix(in srgb, var(--bh-brand) 35%, transparent); }
+@media (max-width:640px){ .back-home{ inset: 12px auto auto 12px; padding: 9px 12px; font-size: 13px; } }
