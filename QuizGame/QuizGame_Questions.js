@@ -2,7 +2,7 @@
 
 const questions = [
   {
-    category: "programming",
+    topic: "programming",
     questions: [
       {
         question: "What does HTML stand for?",
@@ -133,7 +133,7 @@ const questions = [
   },
 
   {
-    category: "geography",
+    topic: "geography",
     questions: [
       {
         question: "Which is the longest river in the world?",
@@ -264,7 +264,7 @@ const questions = [
   },
 
   {
-    category: "mathematics",
+    topic: "mathematics",
     questions: [
       {
         question: "What is the square root of 144?",
@@ -395,7 +395,7 @@ const questions = [
   },
 
   {
-    category: "entertainment",
+    topic: "entertainment",
     questions: [
       {
         question: "Who won the Academy Award for Best Actor in 2022?",

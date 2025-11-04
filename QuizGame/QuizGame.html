@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-    <script src="QuizGame.js"></script>
-    <script src="QuizGame_Questions.js"></script>
-    <script src="../Shared/BackHome.js" data-home="../FrontendPlayground.html"></script>
-
     <!-- Quiz Configuration Container -->
     <div class="config-container">
         <h2 class="config-title">Quiz Configuration</h2>
@@ -52,23 +48,8 @@
         </header>
 
         <div class="quiz-content">
-            <h1 class="question-text"> In JavaScript, how do you create a function?</h1>
-            <ul class="answer-options">
-                <li class="answer-option">
-                    <p>create function myFunction()</p>
-                </li>
-                <li class="answer-option correct">
-                    <p>function myFunction()</p>
-                    <span class="material-symbols-outlined">check_circle</span>
-                </li>
-                <li class="answer-option incorrect">
-                    <p>def function myFunction()</p>
-                    <span class="material-symbols-outlined">cancel</span>
-                </li>
-                <li class="answer-option">
-                    <p>func myFunction()</p>
-                </li>
-            </ul>
+            <h1 class="question-text"></h1>
+            <ul class="answer-options"></ul>
         </div>
 
         <div class="quiz-footer">
@@ -87,5 +68,10 @@
         <p class="result-message">You answered <b>3</b> out of <b>5</b> questions correctly. Great efforts!</p>
         <button class="restart-btn">Play again</button>
     </div>
+
+    <!-- Scripts -->
+    <script src="QuizGame_Questions.js"></script>
+    <script src="QuizGame.js"></script>
+    <script src="../Shared/BackHome.js" data-home="../FrontendPlayground.html"></script>
 </body>
 </html>
