@@ -1,11 +1,39 @@
+// Import questions data
 const answerOptions = document.querySelector(".answer-options");
 const nextQuestionBtn = document.querySelector(".next-question-btn");
 const questionStatus = document.querySelector(".question-status");
+const timerDisplay = document.querySelector(".timer-duration");
 
+// Set initial variables
 let curTopic = "programming";
 let curQuestion = null;
-let numOfQuestions = 10;
+let numOfQuestions = 5;
 const questionIndexHistory = [];
+const QUIZ_TIME_LIMIT = 15; // seconds
+let curTime = QUIZ_TIME_LIMIT;
+let timer = null;
+
+// Reset timer for new question
+const resetTimer = () => {
+    clearInterval(timer);
+    curTime = QUIZ_TIME_LIMIT;
+    timerDisplay.textContent = `${curTime}s`;
+}
+
+// Start the countdown timer for current question
+const startTimer = () => {
+    timer = setInterval(() => {
+        curTime--;
+        timerDisplay.textContent = `${curTime}s`;
+
+        if(curTime <= 0) {
+            clearInterval(timer);
+            highlightCorrectAnswer();
+            nextQuestionBtn.style.visibility = "visible";
+            answerOptions.querySelectorAll('.answer-option').forEach(option => option.style.pointerEvents = 'none');
+        }
+    }, 1000);
+}
 
 // Function to get a random question from the current topic
 const getRandomQuestion = () => {
@@ -32,6 +60,10 @@ const highlightCorrectAnswer = () => {
 
 // Handle answer selection
 const handleAnswer = (selectedOption, selectedIndex) => {
+    // Stop the timer
+    clearInterval(timer);
+
+    // Check if the selected answer is correct
     const isCorrect = curQuestion.correctAnswer === selectedIndex;
     selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
     !isCorrect ? highlightCorrectAnswer() : "";
@@ -51,6 +83,9 @@ const renderQuestion = () => {
     // Get a random question
     curQuestion = getRandomQuestion();
     if(!curQuestion) return;
+
+    resetTimer();
+    startTimer();
 
     // Display new question
     answerOptions.innerHTML = "";
