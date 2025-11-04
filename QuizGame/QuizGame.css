@@ -25,7 +25,7 @@ body {
 }
 
 .config-container {
-    display: none;
+    display: block;
     width: 415px;
     padding: 20px;
     text-align: center;
@@ -45,7 +45,7 @@ body {
     margin-bottom: 20px;
 }
 
-.config-option .category-options {
+.config-option .topic-options {
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(2, 1fr);
@@ -110,7 +110,6 @@ body {
 }
 
 .quiz-container {
-    display: block;
     width: 480px;
 }
 
@@ -137,6 +136,7 @@ body {
     padding: 7px 9px;
     border-radius: 6px;
     background: #32313c;
+    transition: 0.3s ease;
 }
 
 .quiz-header .quiz-timer span {

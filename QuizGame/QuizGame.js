@@ -38,6 +38,7 @@ const startTimer = () => {
             clearInterval(timer);
             highlightCorrectAnswer();
             nextQuestionBtn.style.visibility = "visible";
+            quizContainer.querySelector(".quiz-timer").style.background = "#c31402";
             answerOptions.querySelectorAll('.answer-option').forEach(option => option.style.pointerEvents = 'none');
         }
     }, 1000);
@@ -108,6 +109,7 @@ const renderQuestion = () => {
     // Display new question
     answerOptions.innerHTML = "";
     nextQuestionBtn.style.visibility = "hidden";
+    quizContainer.querySelector(".quiz-timer").style.background = "#32313c";
     document.querySelector(".question-text").textContent = curQuestion.question;
     questionStatus.innerHTML = `<b>${questionIndexHistory.length}</b> of <b>${numOfQuestions}</b> Questions `;
     
@@ -118,7 +120,7 @@ const renderQuestion = () => {
         li.textContent = option;
         answerOptions.appendChild(li);
 
-        //
+        // Click answer option
         li.addEventListener("click", () => handleAnswer(li, index));
     })
 }
@@ -127,6 +129,11 @@ const renderQuestion = () => {
 const startQuiz = () => {
     configContainer.style.display = "none";
     quizContainer.style.display = "block";
+
+    // Get selected topic and number of questions
+    curTopic = configContainer.querySelector(".topic-option.active").textContent;
+    numOfQuestions = parseInt(configContainer.querySelector(".question-option.active").textContent);
+    
     renderQuestion();
 }
 
@@ -140,7 +147,14 @@ const restartQuiz = () => {
 }
 
 // EXECUTION STARTS HERE
-renderQuestion();
+
+// Highlight selected topic and question type
+document.querySelectorAll(".topic-option, .question-option").forEach(option => {
+    option.addEventListener("click", () => {
+        option.parentNode.querySelector(".active").classList.remove("active");
+        option.classList.add("active");
+    });
+});
 
 // Click Next-Question Button to load a new question
 startBtn.addEventListener("click", startQuiz);
