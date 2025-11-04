@@ -12,14 +12,15 @@ const resultContainer = document.querySelector(".result-container");
 const restartBtn = document.querySelector(".restart-btn");
 
 // Set initial variables
-let curTopic = "programming";
+let curTopic = "";
 let curQuestion = null;
-let numOfQuestions = 5;
+let numOfQuestions = -1;
 const questionIndexHistory = [];
+let correctAnswersCount = 0;
+
 const QUIZ_TIME_LIMIT = 15; // seconds
 let curTime = QUIZ_TIME_LIMIT;
 let timer = null;
-let correctAnswersCount = 0;
 
 // Reset timer for new question
 const resetTimer = () => {
