@@ -1,14 +1,24 @@
 const answerOptions = document.querySelector(".answer-options");
 const nextQuestionBtn = document.querySelector(".next-question-btn");
+const questionStatus = document.querySelector(".question-status");
 
 let curTopic = "programming";
 let curQuestion = null;
+let numOfQuestions = 10;
+const questionIndexHistory = [];
 
 // Function to get a random question from the current topic
 const getRandomQuestion = () => {
     const topicQuestions = questions.find(tpc => tpc.topic.toLowerCase() === curTopic.toLowerCase()).questions || [];
+    if(questionIndexHistory.length >= Math.min(topicQuestions.length, numOfQuestions)) {
+        return console.log("All questions have been used.");
+    } 
 
-    const randomQuestion = topicQuestions[Math.floor(Math.random() * topicQuestions.length)];
+    // Update used questions history
+    const availableQuestions = topicQuestions.filter((_, index) => !questionIndexHistory.includes(index));
+    const randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+    questionIndexHistory.push(topicQuestions.indexOf(randomQuestion));
+    
     return randomQuestion;
 }
 
@@ -46,6 +56,7 @@ const renderQuestion = () => {
     answerOptions.innerHTML = "";
     nextQuestionBtn.style.visibility = "hidden";
     document.querySelector(".question-text").textContent = curQuestion.question;
+    questionStatus.innerHTML = `<b>${questionIndexHistory.length}</b> of <b>${numOfQuestions}</b> Questions `;
     
     // Display answer options
     curQuestion.options.forEach((option, index) => {
