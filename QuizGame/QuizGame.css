@@ -17,7 +17,7 @@ body {
     background: #5145BA;
 }
 
-:where(.config-container, .quiz-container) {
+:where(.config-container, .quiz-container, .result-container) {
     display: none;
     background: #fff;
     border-radius: 8px;
@@ -86,7 +86,8 @@ body {
 }
 
 .config-container .start-quiz-btn, 
-.quiz-footer .next-question-btn {
+.quiz-footer .next-question-btn,
+.result-container .restart-btn {
     color: #fff;
     border: none;
     cursor: pointer;
@@ -102,7 +103,9 @@ body {
     margin-top: 30px;
 }
 
-.config-container .start-quiz-btn:hover {
+.config-container .start-quiz-btn:hover,
+.quiz-footer .next-question-btn:hover,
+.result-container .restart-btn:hover {
     background: #403795;
 }
 
@@ -199,7 +202,8 @@ body {
     font-weight: 500;
 }
 
-.quiz-footer .question-status b {
+.quiz-footer .question-status b,
+.result-container .result-message b {
     font-weight: 600;
 }
 
@@ -208,4 +212,29 @@ body {
     gap: 5px;
     align-items: center;
     padding: 9px 17px;
+}
+
+.result-container {
+    text-align: center;
+    padding: 40px;
+    width: 410px;
+}
+
+.result-container .result-img {
+    width: 110px;
+}
+
+.result-container .result-title {
+    margin-top: 30px;
+}
+
+.result-container .result-message {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.result-container .restart-btn {
+    margin-top: 30px;
+    padding: 12px 20px;
 }
