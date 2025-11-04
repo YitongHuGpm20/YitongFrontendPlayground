@@ -85,7 +85,7 @@ body {
     flex: 1 1 10%;
 }
 
-.config-container .start-quiz-btn, 
+.config-container .start-btn, 
 .quiz-footer .next-question-btn,
 .result-container .restart-btn {
     color: #fff;
@@ -99,11 +99,11 @@ body {
     transition: background 0.3s ease;
 }
 
-.config-container .start-quiz-btn {
+.config-container .start-btn {
     margin-top: 30px;
 }
 
-.config-container .start-quiz-btn:hover,
+.config-container .start-btn:hover,
 .quiz-footer .next-question-btn:hover,
 .result-container .restart-btn:hover {
     background: #403795;

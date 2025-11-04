@@ -1,10 +1,13 @@
 // Import questions data
 const configContainer = document.querySelector(".config-container");
+const startBtn = configContainer.querySelector(".start-btn");
+
 const quizContainer = document.querySelector(".quiz-container");
 const answerOptions = document.querySelector(".answer-options");
 const nextQuestionBtn = document.querySelector(".next-question-btn");
 const questionStatus = document.querySelector(".question-status");
 const timerDisplay = document.querySelector(".timer-duration");
+
 const resultContainer = document.querySelector(".result-container");
 const restartBtn = document.querySelector(".restart-btn");
 
@@ -120,6 +123,14 @@ const renderQuestion = () => {
     })
 }
 
+// Start the quiz
+const startQuiz = () => {
+    configContainer.style.display = "none";
+    quizContainer.style.display = "block";
+    renderQuestion();
+}
+
+// Restart the quiz
 const restartQuiz = () => {
     resetTimer();
     correctAnswersCount = 0;
@@ -132,5 +143,6 @@ const restartQuiz = () => {
 renderQuestion();
 
 // Click Next-Question Button to load a new question
+startBtn.addEventListener("click", startQuiz);
 nextQuestionBtn.addEventListener("click", renderQuestion);
 restartBtn.addEventListener("click", restartQuiz);
