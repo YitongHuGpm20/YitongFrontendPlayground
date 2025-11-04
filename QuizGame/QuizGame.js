@@ -1,8 +1,12 @@
 // Import questions data
+const configContainer = document.querySelector(".config-container");
+const quizContainer = document.querySelector(".quiz-container");
 const answerOptions = document.querySelector(".answer-options");
 const nextQuestionBtn = document.querySelector(".next-question-btn");
 const questionStatus = document.querySelector(".question-status");
 const timerDisplay = document.querySelector(".timer-duration");
+const resultContainer = document.querySelector(".result-container");
+const restartBtn = document.querySelector(".restart-btn");
 
 // Set initial variables
 let curTopic = "programming";
@@ -12,6 +16,7 @@ const questionIndexHistory = [];
 const QUIZ_TIME_LIMIT = 15; // seconds
 let curTime = QUIZ_TIME_LIMIT;
 let timer = null;
+let correctAnswersCount = 0;
 
 // Reset timer for new question
 const resetTimer = () => {
@@ -35,11 +40,21 @@ const startTimer = () => {
     }, 1000);
 }
 
+// Show quiz result and hide quiz container
+const showQuizResult = () => {
+    quizContainer.style.display = "none";
+    resultContainer.style.display = "block";
+    const resultText = `You answered <b>${correctAnswersCount}</b> out of <b>${numOfQuestions}</b> questions correctly. Great efforts!`;
+    resultContainer.querySelector(".result-message").innerHTML = resultText;
+}
+
 // Function to get a random question from the current topic
 const getRandomQuestion = () => {
     const topicQuestions = questions.find(tpc => tpc.topic.toLowerCase() === curTopic.toLowerCase()).questions || [];
+    
+    // Check if all questions have been used
     if(questionIndexHistory.length >= Math.min(topicQuestions.length, numOfQuestions)) {
-        return console.log("All questions have been used.");
+        return showQuizResult();
     } 
 
     // Update used questions history
@@ -66,7 +81,7 @@ const handleAnswer = (selectedOption, selectedIndex) => {
     // Check if the selected answer is correct
     const isCorrect = curQuestion.correctAnswer === selectedIndex;
     selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
-    !isCorrect ? highlightCorrectAnswer() : "";
+    !isCorrect ? highlightCorrectAnswer() : correctAnswersCount++;
 
     // Insert icon to answer button based on correctness
     const iconHTML = '<span class="material-symbols-outlined">' + (isCorrect ? 'check_circle' : 'cancel') + '</span>';
@@ -105,7 +120,17 @@ const renderQuestion = () => {
     })
 }
 
+const restartQuiz = () => {
+    resetTimer();
+    correctAnswersCount = 0;
+    questionIndexHistory.length = 0;
+    resultContainer.style.display = "none";
+    configContainer.style.display = "block";
+}
+
+// EXECUTION STARTS HERE
 renderQuestion();
 
 // Click Next-Question Button to load a new question
 nextQuestionBtn.addEventListener("click", renderQuestion);
+restartBtn.addEventListener("click", restartQuiz);
