@@ -1,6 +1,8 @@
 const answerOptions = document.querySelector(".answer-options");
+const nextQuestionBtn = document.querySelector(".next-question-btn");
 
 let curTopic = "programming";
+let curQuestion = null;
 
 // Function to get a random question from the current topic
 const getRandomQuestion = () => {
@@ -10,9 +12,26 @@ const getRandomQuestion = () => {
     return randomQuestion;
 }
 
+// Highlight the correct answer
+const highlightCorrectAnswer = () => {
+    const correctOption = answerOptions.querySelectorAll('.answer-option')[curQuestion.correctAnswer];
+    correctOption.classList.add('correct');
+}
+
+// Handle answer selection
+const handleAnswer = (selectedOption, selectedIndex) => {
+    const isCorrect = curQuestion.correctAnswer === selectedIndex;
+    selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+    !isCorrect ? highlightCorrectAnswer() : "";
+
+    // Disable other options once an answer is selected
+    answerOptions.querySelectorAll('.answer-option').forEach(option => option.style.pointerEvents = 'none');
+}
+
 const renderQuestion = () => {
     // Get a random question
-    const curQuestion = getRandomQuestion();
+    curQuestion = getRandomQuestion();
     if(!curQuestion) return;
 
     // Display new question
@@ -20,12 +39,18 @@ const renderQuestion = () => {
     document.querySelector(".question-text").textContent = curQuestion.question;
     
     // Display answer options
-    curQuestion.options.forEach(option => {
+    curQuestion.options.forEach((option, index) => {
         const li = document.createElement("li");
         li.classList.add("answer-option");
         li.textContent = option;
         answerOptions.appendChild(li);
+
+        //
+        li.addEventListener("click", () => handleAnswer(li, index));
     })
 }
 
 renderQuestion();
+
+// Click Next-Question Button to load a new question
+nextQuestionBtn.addEventListener("click", renderQuestion);
