@@ -16,17 +16,25 @@ const getRandomQuestion = () => {
 const highlightCorrectAnswer = () => {
     const correctOption = answerOptions.querySelectorAll('.answer-option')[curQuestion.correctAnswer];
     correctOption.classList.add('correct');
+    const iconHTML = '<span class="material-symbols-outlined">check_circle</span>';
+    correctOption.insertAdjacentHTML("beforeend", iconHTML);
 }
 
 // Handle answer selection
 const handleAnswer = (selectedOption, selectedIndex) => {
     const isCorrect = curQuestion.correctAnswer === selectedIndex;
     selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
-
     !isCorrect ? highlightCorrectAnswer() : "";
+
+    // Insert icon to answer button based on correctness
+    const iconHTML = '<span class="material-symbols-outlined">' + (isCorrect ? 'check_circle' : 'cancel') + '</span>';
+    selectedOption.insertAdjacentHTML("beforeend", iconHTML);
 
     // Disable other options once an answer is selected
     answerOptions.querySelectorAll('.answer-option').forEach(option => option.style.pointerEvents = 'none');
+    
+    // Show Next Question button
+    nextQuestionBtn.style.visibility = "visible";
 }
 
 const renderQuestion = () => {
@@ -36,6 +44,7 @@ const renderQuestion = () => {
 
     // Display new question
     answerOptions.innerHTML = "";
+    nextQuestionBtn.style.visibility = "hidden";
     document.querySelector(".question-text").textContent = curQuestion.question;
     
     // Display answer options
