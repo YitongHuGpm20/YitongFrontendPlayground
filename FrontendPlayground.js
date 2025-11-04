@@ -49,7 +49,7 @@ const projectGroups = [
     name: "Games",
     projects: [
       { name: "Quiz Game", url: "QuizGame/QuizGame.html" },
-      // { name: "Rock Paper Scissors Game", url: "project1/index.html" },
+      { name: "Flags Game", url: "FlagsGame/FlagsGame.html" },
     ]
   },
   {
@@ -75,7 +75,7 @@ const projectGroups = [
     name: "UI Components",
     projects: [
       { name: "Button Ripple Effect", url: "ButtonRippleEffect/ButtonRippleEffect.html" },
-      { name: "Animated Search Bar", url: "AnimatedSearchBar/AnimatedSearchBar.html" },
+      // { name: "Animated Search Bar", url: "AnimatedSearchBar/AnimatedSearchBar.html" },
       // { name: "Feedback UI", url: "project1/index.html" },
       // { name: "Sticky Navbar", url: "project3/index.html" },
       // { name: "Step Progress Bar", url: "project4/index.html" },
