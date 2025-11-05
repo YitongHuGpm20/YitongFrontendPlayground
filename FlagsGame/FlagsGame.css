@@ -1,97 +1,187 @@
+/* ---- Design tokens ---- */
+:root{
+  --bg: #5372ef;
+  --surface: #ffffff;
+  --text: #010c39;
+  --accent: #e5ffc8;
+  --shadow: 0 0.3em 0.9em rgba(0,0,0,.25);
+  --radius: .8em;
+  --gap: 2em;
+  --maxw: 600px; /* 37.5rem ≈ 600px */
+  --font-base: 1.3rem;
+}
+
+/* ---- Base reset ---- */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Chewy", sans-serif;
-    font-size: 1.3rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Chewy", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: var(--font-base);
 }
 
-body {
-    background-color: #5372ef;
+html, body{
+  height: 100%;
 }
 
-.container {
-    width: 90%;
-    max-width: 37.5rem;
-    background-color: #fff;
-    padding: 2em 0.5em;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 0.8em;
+body{
+  background: var(--bg);
+  display: grid;
+  place-items: center;            /* 居中主容器 */
+  padding: 1rem;
 }
 
-h3 {
-    text-align: center;
-    width: 80%;
-    margin: 0 auto 2em auto;
-    font-size: 1.2em;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    line-height: 1.8em;
-    color: #010c39;
+/* ---- Game container (旧 .container) ---- */
+.game-container, .container{
+  width: min(90%, var(--maxw));
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 2em .75em 2.25em;
+  box-shadow: var(--shadow);
 }
 
-.drag-container, .drop-container {
-    display: flex;
-    justify-content: space-around;
-    padding: 2em;
+/* 标题 */
+.game-container h3,
+.container h3{
+  text-align: center;
+  width: 85%;
+  margin: 0 auto 1.5em;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: .03em;
+  line-height: 1.6em;
+  color: var(--text);
 }
 
-.draggable-image {
-    width: 8em;
-    cursor: move;
+/* ---- Lanes: flags & slots （兼容旧类） ---- */
+.flag-container,
+.slot-container,
+.drag-container,
+.drop-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+  padding: var(--gap);
+  flex-wrap: wrap;
 }
 
-img {
-    width: 8em;
-    filter: drop-shadow(0 0.3em 0.9em rgba(0, 0, 0, 0.25));
+/* ---- Flag card（兼容旧 .draggable-image） ---- */
+.draggable-card,
+.draggable-image{
+  width: 8em;
+  cursor: move;
 }
 
-.countries {
-    width: 10em;
-    height: 8em;
-    display: grid; 
-    place-items: center;
-    border: 0.25em dashed #010c39;
-    border-radius: 0.8em;
+.draggable-card img,
+.draggable-image img,
+img{
+  width: 8em;
+  height: auto;
+  display: block;
+  filter: drop-shadow(var(--shadow));
+  user-select: none;
+  pointer-events: none; /* 拖拽父容器更稳 */
 }
 
-.dropped {
-    padding: 0;
-    background-color: #e5ffc8;
+/* ---- Country slot（兼容旧 .countries） ---- */
+.country-slot,
+.countries{
+  width: 10em;
+  height: 8em;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--text);
+  border: .25em dashed var(--text);
+  border-radius: var(--radius);
+  padding: .25em .5em;
+  line-height: 1.2;
+  word-break: break-word;
+  background: transparent;
+  transition: background .15s ease, transform .1s ease;
 }
 
-.controls-container {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: #5372ef;
-    flex-direction: column;
-    top: 0;
-} 
-
-.controls-container button {
-    font-size: 1.12em;
-    padding: 0.8em 1em;
-    border-radius: 0.2em;
-    border: none;
-    outline: none;
-    color: #010c39;
-    letter-spacing: 0.06em;
-    cursor: pointer;
+/* 成功放置后的视觉状态（旧 .dropped 兼容） */
+.country-slot.dropped,
+.countries.dropped,
+.dropped{
+  background: var(--accent);
+  transform: scale(1.02);
 }
 
-.controls-container p {
-    color: #fff;
-    font-size: 2em;
-    margin-bottom: 1em;
+/* ---- Menu overlay（旧 .controls-container 兼容） ---- */
+.menu-container,
+.controls-container{
+  position: fixed;      /* 覆盖全屏的“开始/结果”层 */
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  gap: 1em;
+  padding: 2rem;
 }
 
-.hide {
-    display: none;
+#result-text,
+.controls-container p{
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+  max-width: min(90vw, var(--maxw));
+}
+
+/* Start 按钮（覆盖旧选择器） */
+.menu-container button,
+.controls-container button,
+#start-button{
+  font-size: 1.12em;
+  padding: .8em 1.1em;
+  border-radius: .4em;
+  border: none;
+  outline: none;
+  color: var(--text);
+  background: #fff;
+  letter-spacing: .06em;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+
+.menu-container button:hover,
+.controls-container button:hover,
+#start-button:hover{
+  transform: translateY(-1px);
+}
+
+.menu-container button:active,
+.controls-container button:active,
+#start-button:active{
+  transform: translateY(0);
+  box-shadow: 0 0.15em 0.45em rgba(0,0,0,.25);
+}
+
+/* ---- Utilities ---- */
+.hide{ display: none !important; }
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 480px){
+  :root{ --font-base: 1.1rem; }
+  .draggable-card,
+  .draggable-image,
+  .draggable-card img,
+  .draggable-image img,
+  img{ width: 7em; }
+
+  .country-slot,
+  .countries{
+    width: 9.5em;
+    height: 7.5em;
+  }
+
+  .flag-container,
+  .slot-container,
+  .drag-container,
+  .drop-container{ padding: 1.25em; }
 }
