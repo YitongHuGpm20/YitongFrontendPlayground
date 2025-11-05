@@ -6,10 +6,20 @@
     <title>Flags Game</title>
     <link rel="stylesheet" href="FlagsGame.css" />
     <link rel="stylesheet" href="../Shared/BackHome.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:wght@100..900&display=swap');
+    </style>
 </head>
 <body>
     <div class="container">
         <h3>Drag the flags to the correct country</h3>
+        <div class="drag-container"></div>
+        <div class="drop-container"></div>
+    </div>
+
+    <div class="controls-container">
+        <p id="result"></p>
+        <button id="start-button">Start Game</button>
     </div>
 
     <script src="FlagsGame.js"></script>
