@@ -1,9 +1,9 @@
 /* ---- Design tokens ---- */
 :root{
-  --bg: #5372ef;
-  --surface: #ffffff;
-  --text: #010c39;
-  --accent: #e5ffc8;
+  --bgColor: #5372ef;
+  --surfaceColor: #ffffff;
+  --textColor: #010c39;
+  --accentColor: #e5ffc8;
   --shadow: 0 0.3em 0.9em rgba(0,0,0,.25);
   --radius: .8em;
   --gap: 2em;
@@ -25,24 +25,23 @@ html, body{
 }
 
 body{
-  background: var(--bg);
+  background: var(--bgColor);
   display: grid;
-  place-items: center;            /* 居中主容器 */
+  place-items: center;
   padding: 1rem;
 }
 
-/* ---- Game container (旧 .container) ---- */
-.game-container, .container{
+/* ---- Game Interface ---- */
+.game-container{
   width: min(90%, var(--maxw));
-  background: var(--surface);
+  background: var(--surfaceColor);
   border-radius: var(--radius);
   padding: 2em .75em 2.25em;
   box-shadow: var(--shadow);
 }
 
-/* 标题 */
-.game-container h3,
-.container h3{
+/* Title Text */
+.game-container h3{
   text-align: center;
   width: 85%;
   margin: 0 auto 1.5em;
@@ -50,14 +49,12 @@ body{
   font-weight: 600;
   letter-spacing: .03em;
   line-height: 1.6em;
-  color: var(--text);
+  color: var(--textColor);
 }
 
-/* ---- Lanes: flags & slots （兼容旧类） ---- */
-.flag-container,
-.slot-container,
-.drag-container,
-.drop-container{
+/* ---- Flag Zone and Slot Zone ---- */
+.flag-container, 
+.slot-container{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -66,82 +63,72 @@ body{
   flex-wrap: wrap;
 }
 
-/* ---- Flag card（兼容旧 .draggable-image） ---- */
-.draggable-card,
-.draggable-image{
+/* ---- Flag Card ---- */
+.flag-card{
   width: 8em;
   cursor: move;
 }
 
-.draggable-card img,
-.draggable-image img,
-img{
+.flag-card img{
   width: 8em;
   height: auto;
   display: block;
   filter: drop-shadow(var(--shadow));
-  user-select: none;
-  pointer-events: none; /* 拖拽父容器更稳 */
+  user-select: none; /* No highlight during dragging */
+  pointer-events: none; /* Put drag event on card instead of on card image */
 }
 
-/* ---- Country slot（兼容旧 .countries） ---- */
-.country-slot,
-.countries{
+/* ---- Country Slot ---- */
+.country-slot{
   width: 10em;
   height: 8em;
   display: grid;
   place-items: center;
   text-align: center;
-  color: var(--text);
-  border: .25em dashed var(--text);
+  color: var(--textColor);
+  border: .25em dashed var(--textColor);
   border-radius: var(--radius);
   padding: .25em .5em;
   line-height: 1.2;
-  word-break: break-word;
+  word-break: break-word; /* Wrap long names */
   background: transparent;
   transition: background .15s ease, transform .1s ease;
 }
 
-/* 成功放置后的视觉状态（旧 .dropped 兼容） */
-.country-slot.dropped,
-.countries.dropped,
-.dropped{
+/* Visual Effect after Drop Card in Slot Successfully */
+.country-slot.dropped{
   background: var(--accent);
   transform: scale(1.02);
 }
 
-/* ---- Menu overlay（旧 .controls-container 兼容） ---- */
-.menu-container,
-.controls-container{
-  position: fixed;      /* 覆盖全屏的“开始/结果”层 */
+/* ---- Menu Interface ---- */
+.menu-container{
+  position: fixed;
   inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
+  background: var(--bgColor);
   gap: 1em;
   padding: 2rem;
 }
 
-#result-text,
-.controls-container p{
+#result-text{
   color: #fff;
   font-size: 2em;
   text-align: center;
   max-width: min(90vw, var(--maxw));
 }
 
-/* Start 按钮（覆盖旧选择器） */
-.menu-container button,
-.controls-container button,
+/* ---- Start Game Button ---- */
 #start-button{
   font-size: 1.12em;
   padding: .8em 1.1em;
   border-radius: .4em;
   border: none;
   outline: none;
-  color: var(--text);
+  color: var(--textColor);
   background: #fff;
   letter-spacing: .06em;
   cursor: pointer;
@@ -149,39 +136,38 @@ img{
   transition: transform .08s ease, box-shadow .12s ease;
 }
 
-.menu-container button:hover,
-.controls-container button:hover,
 #start-button:hover{
   transform: translateY(-1px);
 }
 
-.menu-container button:active,
-.controls-container button:active,
 #start-button:active{
   transform: translateY(0);
   box-shadow: 0 0.15em 0.45em rgba(0,0,0,.25);
 }
 
 /* ---- Utilities ---- */
-.hide{ display: none !important; }
+.hide{ 
+  display: none !important; 
+}
 
 /* ---- Responsive tweaks ---- */
 @media (max-width: 480px){
-  :root{ --font-base: 1.1rem; }
-  .draggable-card,
-  .draggable-image,
-  .draggable-card img,
-  .draggable-image img,
-  img{ width: 7em; }
+  :root{ 
+    --font-base: 1.1rem; 
+  }
+  
+  .flag-card,
+  .flag-card img{
+    width: 7em; 
+  }
 
-  .country-slot,
-  .countries{
+  .country-slot{
     width: 9.5em;
     height: 7.5em;
   }
 
   .flag-container,
-  .slot-container,
-  .drag-container,
-  .drop-container{ padding: 1.25em; }
+  .slot-container{
+    padding: 1.25em; 
+  }
 }
