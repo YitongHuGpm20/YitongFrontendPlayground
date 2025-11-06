@@ -1,121 +1,143 @@
-// ====== 1. 获取基础 DOM 元素 ======
+// ====== Get DOM Elements ======
 const startBtn = document.getElementById("start-button");
-const resultDiv = document.getElementById("result");
-const ctrlContainer = document.querySelector(".controls-container");
-const dragContainer = document.querySelector(".drag-container");
-const dropContainer = document.querySelector(".drop-container");
+const resultTxt = document.getElementById("result-text");
+const menuContainer = document.querySelector(".menu-container");
+const gameContainer = document.querySelector(".game-container");
+const flagContainer = document.querySelector(".flag-container");
+const slotContainer = document.querySelector(".slot-container");
 
-// ====== 2. 游戏数据与状态 ======
+// ====== Game Data ======
 const countries = [
   "belgium","bhutan","brazil","china","cuba","ecuador",
   "georgia","germany","india","iran","myanmar","norway",
   "spain","sri-lanka","sweden","switzerland","united-states","uruguay"
 ];
 
-let dragObjs;  // 左边的可拖拽旗帜卡片
-let dropObjs;  // 右边的目标格子
-let count = 0; // 成功配对数
+let flags;
+let slots;
+let matchCount = 0;
 
-// ====== 3. 工具函数 ======
-const getRandomValue = () => {
+// ====== Helper ======
+const getRandomCountry = () => {
   return countries[Math.floor(Math.random() * countries.length)];
 };
 
 const stopGame = () => {
-  ctrlContainer.classList.remove("hide");
+  menuContainer.classList.remove("hide");
   startBtn.classList.remove("hide");
 };
 
-// ====== 4. 拖拽逻辑（仅桌面） ======
-function dragStart(e) {
-  // 把被拖动的图片 ID 存入 dataTransfer
-  const img = e.currentTarget.querySelector("img");
+// ====== Drag & Drop ======
+function dragStart(event) {
+  // Save image id to dataTransfer
+  const img = event.currentTarget.querySelector("img");
   if (img && img.id) {
-    e.dataTransfer.setData("text/plain", img.id);
+    event.dataTransfer.setData("text/plain", img.id);
+    // 可选提升体验：event.dataTransfer.effectAllowed = "move";
   }
 }
 
-// 必须阻止默认事件，否则无法触发 drop
-function dragOver(e) {
-  e.preventDefault();
+function dragOver(event) {
+  // 必须取消默认，才能触发 drop
+  event.preventDefault();
 }
 
-// 放置逻辑
-function drop(e) {
-  e.preventDefault();
+function drop(event) {
+  event.preventDefault();
 
-  const draggedId = e.dataTransfer.getData("text/plain");
-  const dropId = e.currentTarget.getAttribute("countries-id");
+  // Ignore filled slots
+  if (event.currentTarget.classList.contains("dropped")) return;
 
-  if (draggedId && dropId && draggedId === dropId) {
-    const draggedImg = document.getElementById(draggedId);
-    if (!draggedImg) return;
-    const card = draggedImg.closest(".draggable-image");
+  // Compare dragged flag's id and this slot's id
+  const flagId = event.dataTransfer.getData("text/plain");
+  const slotId = event.currentTarget.getAttribute("country-id");
+  if (flagId && slotId && flagId === slotId) { // Once the ids matched
+    // Get flag
+    const flagImg = document.getElementById(flagId);
+    if (!flagImg) return;
+    const card = flagImg.closest(".flag-card");
     if (!card) return;
 
-    e.currentTarget.classList.add("dropped");
+    // Mark this slot as filled
+    event.currentTarget.classList.add("dropped");
+    
+    // Lock used flag card
     card.classList.add("hide");
     card.setAttribute("draggable", "false");
 
-    e.currentTarget.innerHTML = "";
-    e.currentTarget.insertAdjacentHTML("afterbegin", `<img src="${draggedId}.png" alt="${draggedId}">`);
-    count++;
+    // Add flag image to slot
+    event.currentTarget.innerHTML = "";
+    event.currentTarget.insertAdjacentHTML(
+      "afterbegin",
+      `<img src="Flag Images/${flagId}.png" alt="${flagId}">`
+    );
 
-    if (count === 3) {
-      resultDiv.innerText = "Congratulations! You completed the game!";
+    // Check game progess
+    matchCount++;
+    if (matchCount === 3) {
+      resultTxt.innerText = "Congratulations! You completed the game!";
       stopGame();
     }
   }
 }
 
-// ====== 5. 生成旗帜和国家格子 ======
+// ====== Build Flags & Slots ======
 function createGameElements() {
-  dragContainer.innerHTML = "";
-  dropContainer.innerHTML = "";
+  flagContainer.innerHTML = "";
+  slotContainer.innerHTML = "";
   const chosen = [];
 
+  // Choose 3 unique countries
   while (chosen.length < 3) {
-    const v = getRandomValue();
-    if (!chosen.includes(v)) chosen.push(v);
+    const country = getRandomCountry();
+    if (!chosen.includes(country)) chosen.push(country);
   }
 
-  // 左侧：旗帜
+  // Create flags
   for (const c of chosen) {
     const flagDiv = document.createElement("div");
-    flagDiv.classList.add("draggable-image");
+    flagDiv.classList.add("flag-card");
     flagDiv.setAttribute("draggable", "true");
-    flagDiv.innerHTML = `<img src="${c}.png" id="${c}" alt="${c}">`;
-    dragContainer.appendChild(flagDiv);
+    flagDiv.innerHTML = `<img src="Flag Images/${c}.png" id="${c}" alt="${c}">`;
+    flagContainer.appendChild(flagDiv);
   }
 
-  // 右侧：国家文字（顺序随机）
+  // Create slots with random sequence
   chosen.sort(() => 0.5 - Math.random());
   for (const c of chosen) {
-    const wrap = document.createElement("div");
-    wrap.innerHTML =
-      `<div class="countries" countries-id="${c}">
-        ${c.charAt(0).toUpperCase() + c.slice(1).replace("-", " ")}
-       </div>`;
-    dropContainer.appendChild(wrap);
+    const slotDiv = document.createElement("div");
+    // Set first letter to cap and replace - with space
+    const pretty = c.charAt(0).toUpperCase() + c.slice(1).replace(/-/g, " ");
+    slotDiv.innerHTML = `
+      <div class="country-slot" country-id="${c}">
+        ${pretty}
+      </div>`;
+    slotContainer.appendChild(slotDiv);
   }
 }
 
-// ====== 6. 开始按钮逻辑 ======
+// ====== Start Game Button ======
 startBtn.addEventListener("click", () => {
-  ctrlContainer.classList.add("hide");
+  // Hide menu and start button
+  menuContainer.classList.add("hide");
   startBtn.classList.add("hide");
+
+  // Reset UI text & counters
+  resultTxt.innerText = "";
+  matchCount = 0;
+
+  // Start a new game
   createGameElements();
-  count = 0;
 
-  dropObjs = document.querySelectorAll(".countries");
-  dragObjs = document.querySelectorAll(".draggable-image");
+  flags = document.querySelectorAll(".flag-card");
+  slots = document.querySelectorAll(".country-slot");
 
-  dragObjs.forEach((el) => {
-    el.addEventListener("dragstart", dragStart);
+  flags.forEach((flag) => {
+    flag.addEventListener("dragstart", dragStart);
   });
 
-  dropObjs.forEach((el) => {
-    el.addEventListener("dragover", dragOver);
-    el.addEventListener("drop", drop);
+  slots.forEach((slot) => {
+    slot.addEventListener("dragover", dragOver);
+    slot.addEventListener("drop", drop);
   });
 });
