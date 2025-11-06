@@ -23,6 +23,7 @@ const getRandomCountry = () => {
 };
 
 const stopGame = () => {
+  gameContainer.classList.add("hide");
   menuContainer.classList.remove("hide");
   startBtn.classList.remove("hide");
 };
@@ -37,8 +38,8 @@ function dragStart(event) {
   }
 }
 
+// Stop dragging so can start dropping
 function dragOver(event) {
-  // 必须取消默认，才能触发 drop
   event.preventDefault();
 }
 
@@ -72,7 +73,7 @@ function drop(event) {
       `<img src="Flag Images/${flagId}.png" alt="${flagId}">`
     );
 
-    // Check game progess
+    // Check game process
     matchCount++;
     if (matchCount === 3) {
       resultTxt.innerText = "Congratulations! You completed the game!";
@@ -121,6 +122,7 @@ startBtn.addEventListener("click", () => {
   // Hide menu and start button
   menuContainer.classList.add("hide");
   startBtn.classList.add("hide");
+  gameContainer.classList.remove("hide");
 
   // Reset UI text & counters
   resultTxt.innerText = "";

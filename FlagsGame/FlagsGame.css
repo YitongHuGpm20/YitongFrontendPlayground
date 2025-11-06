@@ -7,8 +7,9 @@
   --shadow: 0 0.3em 0.9em rgba(0,0,0,.25);
   --radius: .8em;
   --gap: 2em;
-  --maxw: 600px; /* 37.5rem ≈ 600px */
+  --maxw: 800px; /* 37.5rem ≈ 600px */
   --font-base: 1.3rem;
+  --img-diameter: 150; 
 }
 
 /* ---- Base reset ---- */
@@ -65,13 +66,14 @@ body{
 
 /* ---- Flag Card ---- */
 .flag-card{
-  width: 8em;
+  width: 4em;
+  height: 4em;
   cursor: move;
 }
 
 .flag-card img{
-  width: 8em;
-  height: auto;
+  width: 4em;
+  height: 4em;
   display: block;
   filter: drop-shadow(var(--shadow));
   user-select: none; /* No highlight during dragging */
@@ -80,8 +82,8 @@ body{
 
 /* ---- Country Slot ---- */
 .country-slot{
-  width: 10em;
-  height: 8em;
+  width: 7em;
+  height: 5em;
   display: grid;
   place-items: center;
   text-align: center;
@@ -95,9 +97,15 @@ body{
   transition: background .15s ease, transform .1s ease;
 }
 
+.country-slot img{
+  width: 4em;
+  height: 4em;
+  display: block;
+}
+
 /* Visual Effect after Drop Card in Slot Successfully */
 .country-slot.dropped{
-  background: var(--accent);
+  background: var(--accentColor);
   transform: scale(1.02);
 }
 
