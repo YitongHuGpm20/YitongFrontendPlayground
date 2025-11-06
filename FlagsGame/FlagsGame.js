@@ -16,6 +16,7 @@ const countries = [
 let flags;
 let slots;
 let matchCount = 0;
+let wrongCount = 0;
 
 // ====== Helper ======
 const getRandomCountry = () => {
@@ -34,7 +35,6 @@ function dragStart(event) {
   const img = event.currentTarget.querySelector("img");
   if (img && img.id) {
     event.dataTransfer.setData("text/plain", img.id);
-    // 可选提升体验：event.dataTransfer.effectAllowed = "move";
   }
 }
 
@@ -52,35 +52,39 @@ function drop(event) {
   // Compare dragged flag's id and this slot's id
   const flagId = event.dataTransfer.getData("text/plain");
   const slotId = event.currentTarget.getAttribute("country-id");
-  if (flagId && slotId && flagId === slotId) { // Once the ids matched
-    // Get flag
-    const flagImg = document.getElementById(flagId);
-    if (!flagImg) return;
-    const card = flagImg.closest(".flag-card");
-    if (!card) return;
+  if (flagId && slotId) {
+    if (flagId === slotId) { // Once the ids matched
+      // Get flag
+      const flagImg = document.getElementById(flagId);
+      if (!flagImg) return;
+      const card = flagImg.closest(".flag-card");
+      if (!card) return;
 
-    // Mark this slot as filled
-    event.currentTarget.classList.add("dropped");
-    
-    // Lock used flag card
-    card.classList.add("hide");
-    card.setAttribute("draggable", "false");
+      // Mark this slot as filled
+      event.currentTarget.classList.add("dropped");
 
-    // Add flag image to slot
-    event.currentTarget.innerHTML = "";
-    event.currentTarget.insertAdjacentHTML(
-      "afterbegin",
-      `<img src="Flag Images/${flagId}.png" alt="${flagId}">`
-    );
+      // Lock used flag card
+      card.classList.add("hide");
+      card.setAttribute("draggable", "false");
 
-    // Check game process
-    matchCount++;
-    if (matchCount === 3) {
-      resultTxt.innerText = "Congratulations! You completed the game!";
-      
-      setTimeout(() => {
-        stopGame();
-      }, 1000);
+      // Add flag image to slot
+      event.currentTarget.innerHTML = "";
+      event.currentTarget.insertAdjacentHTML(
+        "afterbegin",
+        `<img src="Flag Images/${flagId}.png" alt="${flagId}">`
+      );
+
+      // Check game process
+      matchCount++;
+      if (matchCount === 3) {
+        resultTxt.innerText = `Congratulations! You completed the game with ${wrongCount} wrong tries!`;
+
+        setTimeout(() => {
+          stopGame();
+        }, 1000);
+      }
+    } else {
+      wrongCount++;
     }
   }
 }
@@ -130,6 +134,7 @@ startBtn.addEventListener("click", () => {
   // Reset UI text & counters
   resultTxt.innerText = "";
   matchCount = 0;
+  wrongCount = 0;
 
   // Start a new game
   createGameElements();
