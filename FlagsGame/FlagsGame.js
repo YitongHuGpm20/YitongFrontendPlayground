@@ -77,7 +77,10 @@ function drop(event) {
     matchCount++;
     if (matchCount === 3) {
       resultTxt.innerText = "Congratulations! You completed the game!";
-      stopGame();
+      
+      setTimeout(() => {
+        stopGame();
+      }, 1000);
     }
   }
 }
