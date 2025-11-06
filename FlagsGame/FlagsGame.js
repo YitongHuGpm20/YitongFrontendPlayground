@@ -17,6 +17,7 @@ let flags;
 let slots;
 let matchCount = 0;
 let wrongCount = 0;
+let startTime = 0;
 
 // ====== Helper ======
 const getRandomCountry = () => {
@@ -77,7 +78,11 @@ function drop(event) {
       // Check game process
       matchCount++;
       if (matchCount === 3) {
-        resultTxt.innerText = `Congratulations! You completed the game with ${wrongCount} wrong tries!`;
+        // Get game duration
+        const endTime = Date.now();
+        const duration = ((endTime - startTime) / 1000).toFixed(1);
+        
+        resultTxt.innerText = `Congratulations! You completed the game with ${wrongCount} wrong tries in ${duration}s!`;
 
         setTimeout(() => {
           stopGame();
@@ -137,6 +142,7 @@ startBtn.addEventListener("click", () => {
   wrongCount = 0;
 
   // Start a new game
+  startTime = Date.now();
   createGameElements();
 
   flags = document.querySelectorAll(".flag-card");
