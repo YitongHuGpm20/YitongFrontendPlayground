@@ -111,7 +111,7 @@ function createGameElements() {
   for (const c of chosen) {
     const slotDiv = document.createElement("div");
     // Set first letter to cap and replace - with space
-    const pretty = c.charAt(0).toUpperCase() + c.slice(1).replace(/-/g, " ");
+    const pretty = c.split('-').map(word => word.charAt(0).toUpperCase() +word.slice(1)).join(' ');
     slotDiv.innerHTML = `
       <div class="country-slot" country-id="${c}">
         ${pretty}
