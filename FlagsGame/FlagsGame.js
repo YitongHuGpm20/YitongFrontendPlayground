@@ -28,6 +28,7 @@ const stopGame = () => {
   gameContainer.classList.add("hide");
   menuContainer.classList.remove("hide");
   startBtn.classList.remove("hide");
+  startBtn.innerText = "Play Again";
 };
 
 // ====== Drag & Drop ======
