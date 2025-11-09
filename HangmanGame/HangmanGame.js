@@ -1,5 +1,6 @@
 // References
 const topicContainer = document.querySelector(".topic-container");
+const titleTxt = document.getElementById("title-text");
 const letterContainer = document.querySelector(".letter-container");
 const userInputSection = document.querySelector(".user-input-section");
 const canvas = document.querySelector("canvas");
@@ -50,14 +51,12 @@ let topics = {
 
 let matchCount = 0;
 let wrongCount = 0;
-let curWord = "";
 let maxWrong = 6;
+let curWord = "";
+let curTopic = "";
 
 // Display Topic Buttons
 const displayTopics = () => {
-  // Description
-  topicContainer.innerHTML += '<h3>Please Select A Topic</h3>';
-  
   // Create buttons
   let buttonDiv = document.createElement("div");
   for (let topic in topics) {
@@ -87,6 +86,8 @@ const lockButtons = () => {
 
 // Generate a Word from Selected Topic
 const generateWord = (selectedTopic) => {
+  curTopic = selectedTopic;
+  
   // Highlight selected topic and disable topic buttons
   let topicBtns = document.querySelectorAll(".topic-button");
   topicBtns.forEach((topicBtn) => {
@@ -96,9 +97,6 @@ const generateWord = (selectedTopic) => {
     topicBtn.disabled = true;
   });
   
-  //initially hide letters, clear previous word
-  //userInputSection.innerText = "";
-  
   // Choose random word from selected topic and convert it to all cap
   let topicArray = topics[selectedTopic];
   curWord = topicArray[Math.floor(Math.random() * topicArray.length)];
@@ -107,6 +105,22 @@ const generateWord = (selectedTopic) => {
   // Replace every letter with span containing dash and display
   userInputSection.innerHTML = curWord.replace(/./g, '<span class="dashes">_</span>');
   letterContainer.classList.remove("hide");
+
+  // Update title text
+  switch(curTopic) {
+    case "fruits":
+      titleTxt.innerHTML = "Guess which fruit this is";
+      break;
+    case "animals":
+      titleTxt.innerHTML = "Guess which animal this is";
+      break;
+    case "countries":
+      titleTxt.innerHTML = "Guess which country this is";
+      break;
+    default:
+      titleTxt.innerHTML = "ERROR: INVALID TOPIC";
+      break;
+  }
 };
 
 // Start New Game
@@ -117,10 +131,14 @@ const startGame = () => {
   
   // Reset game
   topicContainer.innerHTML = "";
+  titleTxt.innerHTML = "Please Select A Topic";
+  topicContainer.appendChild(titleTxt);
   letterContainer.innerHTML = "";
   userInputSection.innerHTML = "";
   matchCount = 0;
   wrongCount = 0;
+  curWord = "";
+  curTopic = "";
   
   // Create new letter buttons
   for (let i = 65; i < 91; i++) {

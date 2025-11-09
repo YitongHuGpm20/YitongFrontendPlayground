@@ -132,6 +132,7 @@ canvas {
   cursor: pointer;
 }
 
+.topic-button:hover,
 #new-game-button:hover {
   transform: translateY(-2px);
 }
