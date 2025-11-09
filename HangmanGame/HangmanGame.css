@@ -25,19 +25,19 @@ body {
   box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25);
 }
 
-/* Options */
-.options-container {
+/* Topics */
+.topic-container {
   text-align: center;
 }
 
-.options-container div {
+.topic-container div {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 1.2em 0 2.4em 0;
 }
 
-.options-container button {
+.topic-container button {
   padding: 0.6em 1.2em;
   border: 3px solid #000000;
   background-color: #ffffff;
@@ -47,13 +47,13 @@ body {
   cursor: pointer;
 }
 
-.options-container button:disabled {
+.topic-container button:disabled {
   border: 3px solid #808080;
   color: #808080;
   background-color: #efefef;
 }
 
-.options-container button.active {
+.topic-container button.active {
   background-color: #8c52ff;
   border: 3px solid #000000;
   color: #fff;
@@ -105,24 +105,24 @@ canvas {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
-.result-text h2 {
+#result-text h2 {
   font-size: 1.8em;
   text-align: center;
 }
 
-.result-text p {
+#result-text p {
   font-size: 1.25em;
   margin: 1em 0 2em 0;
 }
 
-.result-text span {
+#result-text span {
   font-weight: 600;
 }
 
-.new-game-button {
+#new-game-button {
   font-size: 1.25em;
   padding: 0.5em 1em;
   background-color: #8c52ff;
@@ -132,11 +132,15 @@ canvas {
   cursor: pointer;
 }
 
+#new-game-button:hover {
+  transform: translateY(-2px);
+}
+
 /* Game End */
-.win-msg {
+.win-text {
   color: #39d78d;
 }
 
-.lose-msg {
+.lose-text {
   color: #fe5152;
 }
