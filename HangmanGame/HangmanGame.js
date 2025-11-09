@@ -5,7 +5,7 @@ const userInputSection = document.querySelector(".user-input-section");
 const canvas = document.querySelector("canvas");
 const newGameContainer = document.querySelector(".new-game-container");
 const resultTxt = document.getElementById("result-text");
-const newGameBtn = document.querySelector(".new-game-button");
+const newGameBtn = document.getElementById("new-game-button");
 
 // Initial Variables
 let topics = {
