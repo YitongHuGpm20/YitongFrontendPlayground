@@ -58,8 +58,8 @@ body {
 /* ==== Scoreboard ==== */
 #scoreboard {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 100px;
+  left: 30px;
   font-size: 1.2rem;
   background-color: #cea813;
   color: #ffffff;

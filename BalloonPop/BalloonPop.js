@@ -24,7 +24,7 @@ function createBalloon() {
   balloon.classList.add("balloon");
   balloon.textContent = "🎈";
   balloon.style.left = Math.random() * (window.innerWidth - 50) + "px"; // random x 
-  balloon.style.animationDuration = Math.random() * 3 + 4 + "s"; // random duration
+  balloon.style.animationDuration = Math.random() * 3 + 4 + "s"; // random speed
 
   // Click to pop
   balloon.addEventListener("click", () => {
@@ -33,7 +33,7 @@ function createBalloon() {
     scoreDisplay.textContent = score;
   });
   
-  // Time out and disappear
+  // Reached the top of the screen
   balloon.addEventListener("animationend", () => {
     balloon.remove();
   });
@@ -46,7 +46,7 @@ function startGame() {
   scoreboard.style.display = "block";
   gameRunning = true;
 
-  //Start spawning balloon
+  //Start spawning balloon every 0.4s
   gameInterval = setInterval(createBalloon, 400);
 
   //Start countdown timer
