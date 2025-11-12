@@ -48,11 +48,11 @@ const projectGroups = [
   {
     name: "Mini Games",
     projects: [
-      { name: "Quiz Game", url: "Projects/MiniGames/QuizGame/QuizGame.html" },
+      { name: "Card Wars", url: "Projects/MiniGames/CardWars/CardWars.html" },
+      { name: "Balloon Pop", url: "Projects/MiniGames/BalloonPop/BalloonPop.html" },
       { name: "Flags Game", url: "Projects/MiniGames/FlagsGame/FlagsGame.html" },
       { name: "Hangman Game", url: "Projects/MiniGames/HangmanGame/HangmanGame.html" },
-      { name: "Balloon Pop", url: "Projects/MiniGames/BalloonPop/BalloonPop.html" },
-      { name: "Card Wars", url: "Projects/MiniGames/CardWars/CardWars.html" },
+      { name: "Quiz Game", url: "Projects/MiniGames/QuizGame/QuizGame.html" },
     ]
   },
   {

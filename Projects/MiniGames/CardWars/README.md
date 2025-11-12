@@ -3,4 +3,5 @@
 - Additional improvements, refactoring, and detailed annotations were made by Yitong Hu for learning and educational purposes.
 
 ## Ideas
-- 
+- Restart game
+- Win/lose conditions
