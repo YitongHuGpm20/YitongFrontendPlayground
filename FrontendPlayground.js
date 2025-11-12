@@ -37,7 +37,7 @@ const projectGroups = [
   {
     name: "Generators",
     projects: [
-      { name: "Roll Dice Simulator", url: "RollDiceSimulator/RollDiceSimulator.html" },
+      { name: "Roll Dice Simulator", url: "Projects/Generators/RollDiceSimulator/RollDiceSimulator.html" },
       // { name: "Random Quote Generator", url: "project3/index.html" },
       // { name: "Random Emoji", url: "project4/index.html" },
       // { name: "Random Color Generator", url: "project5/index.html" }
@@ -46,12 +46,12 @@ const projectGroups = [
     ]
   },
   {
-    name: "Games",
+    name: "Mini Games",
     projects: [
-      { name: "Quiz Game", url: "QuizGame/QuizGame.html" },
-      { name: "Flags Game", url: "FlagsGame/FlagsGame.html" },
-      { name: "Hangman Game", url: "HangmanGame/HangmanGame.html" },
-      { name: "Balloon Pop", url: "BalloonPop/BalloonPop.html" },
+      { name: "Quiz Game", url: "Projects/MiniGames/QuizGame/QuizGame.html" },
+      { name: "Flags Game", url: "Projects/MiniGames/FlagsGame/FlagsGame.html" },
+      { name: "Hangman Game", url: "Projects/MiniGames/HangmanGame/HangmanGame.html" },
+      { name: "Balloon Pop", url: "Projects/MiniGames/BalloonPop/BalloonPop.html" },
     ]
   },
   {
@@ -76,7 +76,7 @@ const projectGroups = [
   {
     name: "UI Components",
     projects: [
-      { name: "Button Ripple Effect", url: "ButtonRippleEffect/ButtonRippleEffect.html" },
+      { name: "Button Ripple Effect", url: "Projects/UIComponents/ButtonRippleEffect/ButtonRippleEffect.html" },
       // { name: "Animated Search Bar", url: "AnimatedSearchBar/AnimatedSearchBar.html" },
       // { name: "Feedback UI", url: "project1/index.html" },
       // { name: "Sticky Navbar", url: "project3/index.html" },
