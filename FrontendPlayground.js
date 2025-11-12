@@ -235,3 +235,34 @@ renderProjects(projectGroups);
 $("#searchInput").addEventListener("input", debounce(e => {
   filterProjects(e.target.value.trim());
 }, 150));
+
+// ========= Project Counters =========
+
+// Count total available projects
+function updateProjectCounts() {
+  // Get total project count
+  const total = projectGroups.reduce((sum, group) => sum + (group.projects?.length || 0), 0);
+  const totalCountEl = document.getElementById("totalProjectCount");
+  if (totalCountEl) totalCountEl.textContent = `Total Projects: ${total}`;
+
+  // Update each group title badge
+  const groupTitles = document.querySelectorAll(".group h2");
+  groupTitles.forEach(title => {
+    const groupName = title.textContent.split("(")[0].trim();
+    const group = projectGroups.find(g => g.name === groupName);
+    if (group) {
+      const count = group.projects?.length || 0;
+      title.innerHTML = `${group.name} <span style="font-size:.9rem;color:#666;">(${count})</span>`;
+    }
+  });
+}
+
+// Run after rendering
+updateProjectCounts();
+
+// Recalculate when searching/filtering
+const originalRenderProjects = renderProjects;
+renderProjects = function(...args) {
+  originalRenderProjects.apply(this, args);
+  updateProjectCounts();
+};
