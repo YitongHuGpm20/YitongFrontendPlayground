@@ -14,9 +14,12 @@
   </head>
   <body>
     <div class="container">
+      <!-- ==== Title ==== -->
       <h1>Card Wars</h1>
       <h3>You VS Computer</h3>
-      <div class="cards">
+      
+      <!-- ==== Game ==== -->
+      <div class="game-container">
         <div>
           <h2>You</h2>
           <img
@@ -34,11 +37,15 @@
           />
         </div>
       </div>
+      
       <button onclick="drawCards()">Draw Cards</button>
+      
+      <!-- ==== Scoreboard ==== -->
       <div class="scoreboard">
-        🧍 Your Score: <span id="player-score">0</span><br />
-        🤖 Computer Score: <span id="computer-score">0</span>
+        🧍 Your Score:  <span id="player-score">0</span><br/>
+        🤖 Computer Score:  <span id="computer-score">0</span>
       </div>
+      
       <div class="result" id="result-text"></div>
     </div>
   
