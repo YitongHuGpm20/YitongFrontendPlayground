@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <title>Balloon Pop</title>
+  
+    <link rel="stylesheet" href="BalloonPop.css" />
+    <link rel="stylesheet" href="../Shared/BackHome.css" />
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  </head>
+  <body>
+    <div id="start-screen">
+      <h1>🎈Balloon Pop🎈</h1>
+      <button id="start-btn">Start Game</button>
+    </div>
+    
+    <div id="scoreboard" style="display: none">
+      Time: <span id="time">30</span>s | Score: <span id="score">0</span>
+    </div>
+    
+    <div id="balloon-container"></div>
+    
+    <div id="end-screen" style="display: none">
+      <h1>Game Over!</h1>
+      <p>Your Score: <span id="final-score"></span></p>
+      <button onclick="location.reload()">Play Again</button>
+    </div>
+  
+    <!-- Scripts -->
+    <script src="BalloonPop.js"></script>
+    <script src="../Shared/BackHome.js" data-home="../FrontendPlayground.html"></script>
+  </body>
+</html>
