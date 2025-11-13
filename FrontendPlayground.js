@@ -1,23 +1,17 @@
 // ========= Project Links =========
 const projectGroups = [
   {
-    name: "Time Tools",
+    name: "All-In-One",
     projects: [
-      // { name: "Digital Clock", url: "project1/index.html" },
-      // { name: "Analog Clock", url: "project2/index.html" },
-      // { name: "New Year Countdown", url: "project3/index.html" },
-      // { name: "Poomodoro Timer", url: "project4/index.html" },
-      // { name: "Mini Calendar", url: "project5/index.html" }
-      // { name: "Month Calendar", url: "WorldClock/WorldClock.html" }
-    ]
-  },
-  {
-    name: "Study Tools",
-    projects: [
-      // { name: "Todo List", url: "project1/index.html" },
-      // { name: "Note App", url: "project2/index.html" },
-      // { name: "Real-time Character Counter", url: "project3/index.html" },
-      // { name: "Profile Statistics", url: "project4/index.html" },
+      // calculator
+      // convertors
+      // timer
+      // generators
+      // image edit
+      // buttons
+      // webpage effects
+      // ui components
+      // Gallery effects
     ]
   },
   {
@@ -32,17 +26,75 @@ const projectGroups = [
       // { name: "Temperature Converter", url: "GPACalculator/GPACalculator.html" }
       // { name: "Weight Calculator", url: "TemperatureConverter/TemperatureConverter.html" }
       // { name: "Currency Converter", url: "CurrencyConverter/CurrencyConverter.html" }
+      // scientific calculator
+      // Number to Roman
+      // morse code translator
+      // budget app
+      // decimal-binary converter
+      // interest calculator
+      // usa finance calculator
+      // pixel-em converter
+      // aspect ratio calculator
+      // tip calculator
     ]
   },
   {
-    name: "Generators",
+    name: "Detectors",
     projects: [
-      { name: "Roll Dice Simulator", url: "Projects/Generators/RollDiceSimulator/RollDiceSimulator.html" },
+      // get user location
+      // internet speed detect
+      // Battery status detect
+      // Browser and OS detect
+      // get mouse position
+      // detect key press
+    ]
+  },
+  {
+    name: "English",
+    projects: [
+      { name: "Hangman Game", url: "Projects/English/HangmanGame/HangmanGame.html" },
+      // { name: "English Dictionary", url: "project1/index.html" },
+      // Anagram Checker
+      // Palindrome Checker
+      // wordle game
+      // guess word
+    ]
+  },
+  {
+    name: "Generators & Simulators",
+    projects: [
+      { name: "Roll Dice Simulator", url: "Projects/Simulation/RollDiceSimulator/RollDiceSimulator.html" },
       // { name: "Random Quote Generator", url: "project3/index.html" },
-      // { name: "Random Emoji", url: "project4/index.html" },
+      // { name: "Random Emoji", url: "project4/index.html" }, and emoji maker
       // { name: "Random Color Generator", url: "project5/index.html" }
       // { name: "Dad Jokes Generator", url: "WorldClock/WorldClock.html" }
       // { name: "Random Password Generator", url: "GPACalculator/GPACalculator.html" }
+      // flip coin simulator
+      // border radius generator
+      // ice cream maker
+      // handwritten text generator
+      // random riddle generator
+      // interactive story generator
+      // custom greeting card maker
+      // barcode generator
+      // color palette generator
+      // weight on planets
+      // random choice picker
+      // playable piano
+      // cross stitch app
+      // qr code generator
+      // spin wheel
+      // flashcard
+      // pixel art maker
+      // captcha generator
+    ]
+  },
+  {
+    name: "Lifestyle",
+    projects: [
+      // News website
+      // movie app
+      // recipe book
     ]
   },
   {
@@ -52,8 +104,8 @@ const projectGroups = [
       { name: "Balloon Pop", url: "Projects/MiniGames/BalloonPop/BalloonPop.html" },
       { name: "Flags Game", url: "Projects/MiniGames/FlagsGame/FlagsGame.html" },
       { name: "Fruit Fall", url: "Projects/MiniGames/FruitFall/FruitFall.html" },
-      { name: "Hangman Game", url: "Projects/MiniGames/HangmanGame/HangmanGame.html" },
       { name: "Quiz Game", url: "Projects/MiniGames/QuizGame/QuizGame.html" },
+      // Color guessing game
     ]
   },
   {
@@ -67,18 +119,54 @@ const projectGroups = [
       // { name: "Image Search App", url: "GPACalculator/GPACalculator.html" }
       // { name: "Video Trailer Popup", url: "GPACalculator/GPACalculator.html" }
       // { name: "Anime Pics Generator", url: "GPACalculator/GPACalculator.html" }
+      // photo carousel stack
+      // image accordion
+      // image edit
+      // cartoonify image
+      // screenshot capture
+      // color contrast checker
+      // coloring app
+      // text to speech
+      // image color picker
+      // custom video player
+      // record player
+      // custom music player
+      // product image zoom
+      // drawing app
+      // random gradient generator
+      // random hex code generator
+      // rgb to hex converter
     ]
   },
   {
-    name: "Dictionaries",
+    name: "Production Tools",
     projects: [
-      // { name: "English Dictionary", url: "project1/index.html" },
+      // { name: "Todo List", url: "project1/index.html" },
+      // { name: "Note App", url: "project2/index.html" },
+      // { name: "Real-time Character Counter", url: "project3/index.html" },
+      // { name: "Profile Statistics", url: "project4/index.html" },
+      // booklist
+      
+    ]
+  },
+  {
+    name: "Time Tools",
+    projects: [
+      // { name: "Digital Clock", url: "project1/index.html" },
+      // { name: "Analog Clock", url: "project2/index.html" },
+      // { name: "New Year Countdown", url: "project3/index.html" },
+      // { name: "Poomodoro Timer", url: "project4/index.html" },
+      // { name: "Mini Calendar", url: "project5/index.html" }
+      // { name: "Month Calendar", url: "WorldClock/WorldClock.html" }
+      // stopwatch
+      // alarm
+      // Compare dates
+      // find leap year
     ]
   },
   {
     name: "UI Components",
     projects: [
-      { name: "Button Ripple Effect", url: "Projects/UIComponents/ButtonRippleEffect/ButtonRippleEffect.html" },
       // { name: "Animated Search Bar", url: "AnimatedSearchBar/AnimatedSearchBar.html" },
       // { name: "Feedback UI", url: "project1/index.html" },
       // { name: "Sticky Navbar", url: "project3/index.html" },
@@ -87,16 +175,41 @@ const projectGroups = [
       // { name: "Dark Mode Toggle", url: "WorldClock/WorldClock.html" }
       // { name: "Blurred Background Popup", url: "GPACalculator/GPACalculator.html" }
       // { name: "Mouse Event", url: "GPACalculator/GPACalculator.html" }
-      // { name: "Heart Trail Animation", url: "GPACalculator/GPACalculator.html" }
       // { name: "Auto Text Effect Animation", url: "GPACalculator/GPACalculator.html" }
       // { name: "Double Landing Page", url: "GPACalculator/GPACalculator.html" }
+      // { name: "Testimonial Slider", url: "project2/index.html" },
+      // Animated scroll timeline
+      // scroll to section
+      // dynamic pagination
+      // drag-sort grid
+      // multi-step form
+      // custom toast notification
+      // auto complete search bar
+      // custom modal (pop up window message)
+      // dynamic color changer
+      // sales notification
+      // dodging button
+      // detect swipe direction
+      // form validation
+      // Rich Text Editor
     ]
   },
   {
-    name: "Others",
+    name: "Visual Effects",
     projects: [
-      // { name: "Recipe Book App", url: "project1/index.html" },
-      // { name: "Testimonial Slider", url: "project2/index.html" },
+      { name: "Button Ripple Effect", url: "Projects/VisualEffects/ButtonRippleEffect/ButtonRippleEffect.html" },
+      // { name: "Heart Trail Animation", url: "GPACalculator/GPACalculator.html" }
+      // typing effect
+      // neon cursor
+      // custom mouse hover effect
+      // confetti on button
+      // Flashlight effect
+      // snowfall effect
+      // santa follows cursor
+      // firework
+      // scratch card
+      // Snowflake on click
+      // eyes follow cursor
     ]
   }
 ];
