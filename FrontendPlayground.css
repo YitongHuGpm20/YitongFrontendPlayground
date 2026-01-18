@@ -1,6 +1,4 @@
-/* =========================
-   Base & Variables
-========================= */
+/*#region ====== Base & Variables ====== */
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -44,9 +42,9 @@ body {
   * { animation: none !important; transition: none !important; }
 }
 
-/* =========================
-   Layout: Header & Intro
-========================= */
+/*#endregion*/
+
+/*#region ====== Layout: Header & Intro ====== */
 header {
   padding: 60px var(--space-3) var(--space-4);
 }
@@ -62,9 +60,9 @@ header p {
   margin: 0 auto;
 }
 
-/* =========================
-   Search
-========================= */
+/*#endregion*/
+
+/*#region ====== Search ====== */
 .search-section { margin: var(--space-1); }
 
 #searchInput {
@@ -83,9 +81,9 @@ header p {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent);
 }
 
-/* =========================
-   Project List (legacy id kept)
-========================= */
+/*#endregion*/
+
+/*#region ====== Project List ====== */
 #projectList,
 .group-buttons {
   display: flex;
@@ -95,9 +93,6 @@ header p {
   padding: var(--space-3);
 }
 
-/* =========================
-   Project Button
-========================= */
 .project-btn {
   background-color: var(--white);
   border: none;
@@ -119,25 +114,81 @@ header p {
   box-shadow: var(--shadow-md), 0 0 0 3px color-mix(in srgb, var(--brand) 35%, transparent);
 }
 
-/* =========================
-   Groups
-========================= */
 .group { 
   margin-top: var(--space-5);
 }
 
+/* Group title behaves like a button */
 .group h2 {
   font-size: var(--fz-h2);
   margin: var(--space-1) 0 var(--space-1);
   color: var(--text);
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  width: fit-content;
+  max-width: 100%;
+
+  user-select: none;
+  transition: background-color 120ms ease, transform 120ms ease, opacity 120ms ease;
 }
 
-/* =========================
-   Responsive
-========================= */
+/* Hover highlight */
+.group h2:hover {
+  background: rgba(255, 118, 81, 0.10); /* 你项目里常用的橙色系，偏淡即可 */
+}
+
+/* Keyboard accessibility */
+.group h2:focus-visible {
+  outline: 2px solid rgba(255, 118, 81, 0.6);
+  outline-offset: 2px;
+}
+
+/* The arrow indicator */
+.group h2 .collapse-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+
+  font-size: 20px;
+  line-height: 1;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+/* Expanded = arrow points down */
+.group h2[aria-expanded="true"] .collapse-indicator {
+  transform: rotate(90deg);
+}
+
+/* Collapsed visual hint */
+.group h2[aria-expanded="false"] {
+  opacity: 0.85;
+}
+.group h2[aria-expanded="false"]:hover {
+  opacity: 1;
+}
+
+
+/*#endregion*/
+
+/*#region ====== Responsive ====== */
+
 @media (max-width: 640px) {
   header { padding: 40px var(--space-3) var(--space-3); }
   #projectList,
   .group-buttons { padding: var(--space-4); }
   .project-btn { padding: 12px 18px; }
 }
+
+/*#endregion*/

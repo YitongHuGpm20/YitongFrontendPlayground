@@ -66,13 +66,29 @@ function renderProjects(groups, keyword = "") {
     const section = document.createElement("section");
     section.className = "group";
 
-    // Title + Count Badge + Collapse Button
+    // Title element
     const title = document.createElement("h2");
-    title.innerHTML = `${group.name} <span style="font-size:.9rem;color:#666;">(${group.projects.length})</span>`;
     title.style.cursor = "pointer";
     title.setAttribute("role", "button");
     title.setAttribute("tabindex", "0");
     title.setAttribute("aria-expanded", String(!collapsedState[groupId]));
+
+    // Left: text + count
+    const left = document.createElement("span");
+    left.className = "group-title-left";
+    left.innerHTML = `
+      <span class="group-title-text">${group.name}</span>
+      <span class="group-count" style="font-size:.9rem;color:#666;">(${group.projects.length})</span>
+    `;
+
+    // Right: indicator
+    const indicator = document.createElement("span");
+    indicator.className = "collapse-indicator";
+    indicator.setAttribute("aria-hidden", "true");
+    indicator.textContent = "›";
+
+    title.appendChild(left);
+    title.appendChild(indicator);
 
     // Button container
     const btnContainer = document.createElement("div");
@@ -152,14 +168,18 @@ function updateProjectCounts() {
   const totalCountEl = document.getElementById("totalProjectCount");
   if (totalCountEl) totalCountEl.textContent = `Total Projects: ${total}`;
 
-  // Update each group title badge
+  // Update each group title badge (do NOT overwrite whole title HTML)
   const groupTitles = document.querySelectorAll(".group h2");
   groupTitles.forEach(title => {
-    const groupName = title.textContent.split("(")[0].trim();
+    const nameEl = title.querySelector(".group-title-text");
+    const countEl = title.querySelector(".group-count");
+    if (!nameEl || !countEl) return;
+
+    const groupName = nameEl.textContent.trim();
     const group = projectGroups.find(g => g.name === groupName);
     if (group) {
       const count = group.projects?.length || 0;
-      title.innerHTML = `${group.name} <span style="font-size:.9rem;color:#666;">(${count})</span>`;
+      countEl.textContent = `(${count})`;
     }
   });
 }
