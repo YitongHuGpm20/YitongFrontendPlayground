@@ -16,11 +16,22 @@
 
   <!-- ====== Search Bar ====== -->
   <section class="search-section">
-    <input 
-      type="text" 
-      id="searchInput" 
-      placeholder="Search projects..."
-    />
+    <div class="search-wrapper">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search projects..."
+        autocomplete="off"
+      />
+      <button
+        id="searchClear"
+        class="search-clear"
+        aria-label="Clear search"
+        tabindex="-1"
+      >
+        ×
+      </button>
+    </div>
   </section>
 
   <!-- ====== Project Lists ====== -->

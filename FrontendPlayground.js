@@ -159,6 +159,40 @@ $("#searchInput").addEventListener("input", debounce(e => {
 
 //#endregion
 
+//#region ========= Search Clear =========
+
+const searchInput = $("#searchInput");
+const clearBtn = $("#searchClear");
+
+function updateClearButton() {
+  clearBtn.style.display = searchInput.value.trim() ? "block" : "none";
+}
+
+searchInput.addEventListener("input", () => {
+  updateClearButton();
+});
+
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  updateClearButton();
+  
+  searchInput.dispatchEvent(new Event("input"));
+  
+  searchInput.focus();
+});
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && searchInput.value) {
+    searchInput.value = "";
+    updateClearButton();
+    searchInput.dispatchEvent(new Event("input"));
+  }
+});
+
+updateClearButton();
+
+//#endregion
+
 //#region ========= Project Counters =========
 
 // Count total available projects

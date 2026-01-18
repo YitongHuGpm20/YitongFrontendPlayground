@@ -81,6 +81,42 @@ header p {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent);
 }
 
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.search-wrapper #searchInput {
+  padding-right: 34px;
+}
+
+/* Clear (×) button */
+.search-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  color: #666;
+
+  font-size: 16px;
+  line-height: 22px;
+  cursor: pointer;
+
+  display: none;
+}
+
+.search-clear:hover {
+  background: color-mix(in srgb, var(--brand) 25%, transparent);
+  color: #000;
+}
+
 /*#endregion*/
 
 /*#region ====== Project List ====== */
