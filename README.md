@@ -77,6 +77,7 @@ FrontendPlayground/
 │   │   │   ├─ HangmanGame.html    # Project Homepage
 │   │   │   ├─ HangmanGame.js      # Project script
 │   │   │   ├─ HangmanGame.css     # Project styles
+│   │   │   ├─ Assets/             # Project assets
 │   │   │   └─ README.md           # Project description
 │   │   └─ ...
 │   ├─ MiniGames/
@@ -84,7 +85,7 @@ FrontendPlayground/
 │   └─ ...
 │
 ├─ Shared/                         # Components used by multiple projects
-└─ UI/                             # Visual assets
+└─ UI/                             # Homepage assets
 
 ```
 
@@ -94,12 +95,12 @@ FrontendPlayground/
 Each project is defined in Projects.js with structured metadata:
 ```text
 {
-  name: "Card Wars",
-  url: "/Projects/MiniGames/CardWars/CardWars.html",
-  tags: ["DOM", "Fetch API", "Promise", "Event Handling", "Third-Party API"],
-  desc: "A card battle mini game using the Deck of Cards API to practice async requests and basic game logic.",
-  logo: "/UI/Project_Logos/CardWars_Logo.png",
-  thumbnail: "/UI/Project_Thumbnails/CardWars_Thumbnail.png",
+  name: "Card Wars", 
+  url: "Projects/MiniGames/CardWars/CardWars.html",
+  tags: ["Card Game", "API", "Score"],
+  desc: "A simple card battle game where the player and the computer draw cards from a shared deck and compete to see whose card has the higher value each round.",
+  logo: "Projects/MiniGames/CardWars/Assets/CardWars_Logo.png",
+  thumbnail: "Projects/MiniGames/CardWars/Assets/CardWars_Thumbnail.png",
   duration: "20-30 minutes"
 }
 
