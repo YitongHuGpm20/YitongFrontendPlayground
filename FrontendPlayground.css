@@ -30,11 +30,18 @@
 html { font-size: var(--fz-base); }
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: var(--bg);
   color: var(--text);
   margin: 0;
   text-align: center;
   line-height: 1.5;
+
+  background-image: url("UI/Homepage_Background.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  background-color: var(--bg); /* In case background image can't be loaded */
 }
 
 /* Prefer reduced motion */
