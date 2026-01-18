@@ -54,11 +54,11 @@ const projectGroups = [
       { 
         name: "Hangman Game", 
         url: "Projects/English/HangmanGame/HangmanGame.html",
-        tags: ["DOM", "Fetch API", "Promise", "Event Handling", "Third-Party API"],
-        desc: "A card battle mini game using the Deck of Cards API to practice async requests and basic game logic.",
-        logo: "/UI/Project_Logos/HangmanGame_Logo.png",
-        thumbnail: "/UI/Project_Thumbnails/HangmanGame_Thumbnail.png",
-        duration: "20-30 minutes"
+        tags: ["Word Game", "User Input", "Canvas Drawing", "State Tracking", "Data-driven"],
+        desc: "A classic hangman word-guessing game with themed vocabulary, where players reveal letters step by step and try to complete the word before the drawing is finished.",
+        logo: "Projects/English/HangmanGame/Assets/HangmanGame_Logo.png",
+        thumbnail: "Projects/English/HangmanGame/Assets/HangmanGame_Thumbnail.png",
+        duration: "30-45 minutes"
       },
       // { name: "English Dictionary", url: "project1/index.html" },
       // Anagram Checker
@@ -70,7 +70,15 @@ const projectGroups = [
   {
     name: "Generators & Simulators",
     projects: [
-      { name: "Roll Dice Simulator", url: "Projects/Simulation/RollDiceSimulator/RollDiceSimulator.html" },
+      { 
+        name: "Roll Dice Simulator", 
+        url: "Projects/Simulation/RollDiceSimulator/RollDiceSimulator.html",
+        tags: ["Randomness"],
+        desc: "A simple dice rolling simulator that displays animated rolls and keeps a visible history of previous results.",
+        logo: "Projects/Simulation/RollDiceSimulator/Assets/RollDiceSimulator_Logo.png",
+        thumbnail: "Projects/Simulation/RollDiceSimulator/Assets/RollDiceSimulator_Thumbnail.png",
+        duration: "20-30 minutes"
+      },
       // { name: "Random Quote Generator", url: "project3/index.html" },
       // { name: "Random Emoji", url: "project4/index.html" }, and emoji maker
       // { name: "Random Color Generator", url: "project5/index.html" }
@@ -107,11 +115,51 @@ const projectGroups = [
   {
     name: "Mini Games",
     projects: [
-      { name: "Card Wars", url: "Projects/MiniGames/CardWars/CardWars.html" },
-      { name: "Balloon Pop", url: "Projects/MiniGames/BalloonPop/BalloonPop.html" },
-      { name: "Flags Game", url: "Projects/MiniGames/FlagsGame/FlagsGame.html" },
-      { name: "Fruit Fall", url: "Projects/MiniGames/FruitFall/FruitFall.html" },
-      { name: "Quiz Game", url: "Projects/MiniGames/QuizGame/QuizGame.html" },
+      { 
+        name: "Card Wars", 
+        url: "Projects/MiniGames/CardWars/CardWars.html",
+        tags: ["Card Game", "API", "Score"],
+        desc: "A simple card battle game where the player and the computer draw cards from a shared deck and compete to see whose card has the higher value each round.",
+        logo: "Projects/MiniGames/CardWars/Assets/CardWars_Logo.png",
+        thumbnail: "Projects/MiniGames/CardWars/Assets/CardWars_Thumbnail.png",
+        duration: "20-30 minutes"
+      },
+      { 
+        name: "Balloon Pop", 
+        url: "Projects/MiniGames/BalloonPop/BalloonPop.html",
+        tags: ["Reaction Game", "Timed", "Difficulty Scaling", "Score"],
+        desc: "A fast-paced balloon popping game where players click floating balloons to score points before time runs out, with increasing speed and pressure as the game progresses.",
+        logo: "Projects/MiniGames/BalloonPop/Assets/BalloonPop_Logo.png",
+        thumbnail: "Projects/MiniGames/BalloonPop/Assets/BalloonPop_Thumbnail.png",
+        duration: "20-30 minutes"
+      },
+      { 
+        name: "Flags Game",
+        url: "Projects/MiniGames/FlagsGame/FlagsGame.html",
+        tags: ["Drag-n-drop", "Timed", "Matching Game", "State Tracking", "Data-driven"],
+        desc: "A drag-and-drop flag matching game where players match country flags to their correct names as quickly and accurately as possible.",
+        logo: "Projects/MiniGames/FlagsGame/Assets/FlagsGame_Logo.png",
+        thumbnail: "Projects/MiniGames/FlagsGame/Assets/FlagsGame_Thumbnail.png",
+        duration: "30-45 minutes"
+      },
+      { 
+        name: "Fruit Fall", 
+        url: "Projects/MiniGames/FruitFall/FruitFall.html",
+        tags: [],
+        desc: "",
+        logo: "Projects/MiniGames/FruitFall/Assets/FruitFall_Logo.png",
+        thumbnail: "Projects/MiniGames/FruitFall/Assets/FruitFall_Thumbnail.png",
+        duration: "30-45 minutes"
+      },
+      { 
+        name: "Quiz Game",
+        url: "Projects/MiniGames/QuizGame/QuizGame.html",
+        tags: ["Quiz", "Timed", "Data-driven"],
+        desc: "A fast-paced quiz game where players answer timed multiple-choice questions and get instant feedback on their performance.",
+        logo: "Projects/MiniGames/QuizGame/Assets/QuizGame_Logo.png",
+        thumbnail: "Projects/MiniGames/QuizGame/Assets/QuizGame_Thumbnail.png",
+        duration: "45-60 minutes"
+      },
       // Color guessing game
     ]
   },
@@ -204,7 +252,15 @@ const projectGroups = [
   {
     name: "Visual Effects",
     projects: [
-      { name: "Button Ripple Effect", url: "Projects/VisualEffects/ButtonRippleEffect/ButtonRippleEffect.html" },
+      { 
+        name: "Button Ripple Effect", 
+        url: "Projects/VisualEffects/ButtonRippleEffect/ButtonRippleEffect.html",
+        tags: ["Interaction Feedback", "User Input"],
+        desc: "A button hover effect that creates a ripple animation originating from the mouse position, adding responsive and tactile visual feedback to user interactions.",
+        logo: "Projects/VisualEffects/ButtonRippleEffect/Assets/ButtonRippleEffect_Logo.png",
+        thumbnail: "Projects/VisualEffects/ButtonRippleEffect/Assets/ButtonRippleEffect_Thumbnail.png",
+        duration: "10-20 minutes"
+      },
       // { name: "Heart Trail Animation", url: "GPACalculator/GPACalculator.html" }
       // typing effect
       // neon cursor

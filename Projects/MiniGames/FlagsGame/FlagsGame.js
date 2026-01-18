@@ -73,7 +73,7 @@ function drop(event) {
       event.currentTarget.innerHTML = "";
       event.currentTarget.insertAdjacentHTML(
         "afterbegin",
-        `<img src="Flag Images/${flagId}.png" alt="${flagId}">`
+        `<img src="Assets/Flag Images/${flagId}.png" alt="${flagId}">`
       );
 
       // Check game process
@@ -112,7 +112,7 @@ function createGameElements() {
     const flagDiv = document.createElement("div");
     flagDiv.classList.add("flag-card");
     flagDiv.setAttribute("draggable", "true");
-    flagDiv.innerHTML = `<img src="Flag Images/${c}.png" id="${c}" alt="${c}">`;
+    flagDiv.innerHTML = `<img src="Assets/Flag Images/${c}.png" id="${c}" alt="${c}">`;
     flagContainer.appendChild(flagDiv);
   }
 
