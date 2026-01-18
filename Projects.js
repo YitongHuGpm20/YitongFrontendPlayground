@@ -142,15 +142,15 @@ const projectGroups = [
         thumbnail: "Projects/MiniGames/FlagsGame/Assets/FlagsGame_Thumbnail.png",
         duration: "30-45 minutes"
       },
-      { 
-        name: "Fruit Fall", 
-        url: "Projects/MiniGames/FruitFall/FruitFall.html",
-        tags: [],
-        desc: "",
-        logo: "Projects/MiniGames/FruitFall/Assets/FruitFall_Logo.png",
-        thumbnail: "Projects/MiniGames/FruitFall/Assets/FruitFall_Thumbnail.png",
-        duration: "30-45 minutes"
-      },
+      // { 
+      //   name: "Fruit Fall", 
+      //   url: "Projects/MiniGames/FruitFall/FruitFall.html",
+      //   tags: [],
+      //   desc: "",
+      //   logo: "Projects/MiniGames/FruitFall/Assets/FruitFall_Logo.png",
+      //   thumbnail: "Projects/MiniGames/FruitFall/Assets/FruitFall_Thumbnail.png",
+      //   duration: "30-45 minutes"
+      // },
       { 
         name: "Quiz Game",
         url: "Projects/MiniGames/QuizGame/QuizGame.html",

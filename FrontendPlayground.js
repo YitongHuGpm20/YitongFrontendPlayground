@@ -96,8 +96,14 @@ function renderProjects(groups, keyword = "") {
 
     group.projects.forEach(p => {
       const btn = document.createElement("button");
+      const hasLogo = !!p.logo;
+      
       // Highlight matching parts
-      btn.innerHTML = highlight(p.name, keyword);
+      btn.innerHTML = `
+        ${hasLogo ? `<img class="project-logo" src="${p.logo}" alt="${p.name} logo" />` : ""}
+        ${hasLogo ? "" : `<span class="project-name">${highlight(p.name, keyword)}</span>`}
+      `;
+      
       btn.className = "project-btn";
       btn.addEventListener("click", () => window.open(p.url, "_blank"));
       btnContainer.appendChild(btn);
