@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="UI/Homepage_Logo.png" width="200" alt="Frontend Playground Logo" />
+</p>
+
 # Yitong's Frontend Playground
 
 This is a learning-oriented collection of frontend interactive mini projects.  
