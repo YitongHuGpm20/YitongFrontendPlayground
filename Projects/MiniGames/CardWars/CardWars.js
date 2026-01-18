@@ -1,9 +1,9 @@
-// ==== References ====
+// ====== References ======
 const playerImg = document.getElementById("player-card");
 const computerImg = document.getElementById("computer-card");
 const resultText = document.getElementById("result-text");
 
-// ==== Variables ====
+// ====== Variables ======
 let deckId = "";
 let playerScore = 0;
 let computerScore = 0;
