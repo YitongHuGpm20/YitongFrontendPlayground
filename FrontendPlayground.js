@@ -1,4 +1,79 @@
-//#region ========= Utils =========
+//#region ========== Intro Card ========
+
+// DOM
+const introOverlay = document.getElementById("intro-overlay");
+const introThumbnail = document.getElementById("intro-thumbnail");
+const introTitle = document.getElementById("intro-title");
+const introDesc = document.getElementById("intro-desc");
+const introTags = document.getElementById("intro-tags");
+const introDuration = document.getElementById("intro-duration");
+const introOpenBtn = document.getElementById("intro-btn-open");
+const introCloseBtn = document.getElementById("intro-btn-close");
+
+// State
+let currentProject = null;
+
+// ===== OPEN =====
+function openIntro(project) {
+  currentProject = project;
+
+  introThumbnail.src = project.thumbnail || project.logo || "";
+  introTitle.textContent = project.name || "";
+  introDesc.textContent = project.desc || "";
+
+  // tags
+  introTags.innerHTML = "";
+  if (project.tags) {
+    project.tags.forEach(tag => {
+      const span = document.createElement("span");
+      span.className = "intro-tag";
+      span.textContent = tag;
+      introTags.appendChild(span);
+    });
+  }
+
+  introDuration.textContent = project.duration || "";
+  introOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+// ===== CLOSE =====
+function closeIntro() {
+  introOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+// ===== OPEN PROJECT =====
+function openProject() {
+  if (!currentProject) return;
+
+  if (currentProject.url) {
+    window.open(currentProject.url, "_blank");
+  }
+}
+
+// ===== EVENTS =====
+
+introCloseBtn.addEventListener("click", closeIntro);
+introOpenBtn.addEventListener("click", openProject);
+
+// close by click on background
+introOverlay.addEventListener("click", (e) => {
+  if (e.target === introOverlay) {
+    closeIntro();
+  }
+});
+
+// close by ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeIntro();
+  }
+});
+
+//#endregion
+
+//#region ========== Utils ==========
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const STORAGE_KEY = "groupCollapsedState:v1";
@@ -105,7 +180,7 @@ function renderProjects(groups, keyword = "") {
       `;
       
       btn.className = "project-btn";
-      btn.addEventListener("click", () => window.open(p.url, "_blank"));
+      btn.addEventListener("click", () => openIntro(p));
       btnContainer.appendChild(btn);
     });
 
