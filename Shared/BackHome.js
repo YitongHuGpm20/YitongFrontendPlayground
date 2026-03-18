@@ -1,7 +1,7 @@
 (() => {
   const scriptEl = document.currentScript;
   // Get home URL from data attribute or default to /index.html
-  const homeAttr = scriptEl?.dataset?.home || '/index.html';
+  const homeAttr = scriptEl?.dataset?.home || 'index.html';
   const homeURL = new URL(homeAttr, location.href);
 
   const btn = document.createElement('button');
